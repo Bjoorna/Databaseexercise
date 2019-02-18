@@ -14,3 +14,13 @@ update actor set Name = "James Eugene Carrey" where ActorID = 1;
 
 # task 1e
 delete from director where DirectorID = 2;
+
+# midlertidig 
+
+
+drop table actorinmovie;
+drop table actor;
+drop table genreinmovie;
+drop table movie;
+drop table director;
+drop table genre;
