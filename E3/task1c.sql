@@ -17,7 +17,6 @@ delete from director where DirectorID = 2;
 
 # midlertidig 
 
-
 drop table actorinmovie;
 drop table actor;
 drop table genreinmovie;
