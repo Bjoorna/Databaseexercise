@@ -7,7 +7,6 @@ CREATE table Movie (
     ProductionYear integer,
     
     PRIMARY KEY (MovieID)
-		
 );
 
 CREATE table Genre (
@@ -28,7 +27,9 @@ CREATE table Director(
 CREATE table Actor(
 	ActorID integer,
     Name varchar(255),
-    BirthYear integer
+    BirthYear integer,
+    
+    primary key (ActorID)
 );
     
 CREATE table GenreInMovie (
@@ -49,10 +50,12 @@ create table ActorInMovie(
     MovieID integer,
     Role varchar(255),
     
-    
     primary key (MovieID, ActorID),
     foreign key (MovieID) references Movie(MovieID)
 		on update cascade on delete cascade,
     foreign key (ActorID) references Actor(ActorID)
 		on update cascade on delete cascade
 );
+
+
+
