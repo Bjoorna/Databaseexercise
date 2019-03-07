@@ -1,9 +1,13 @@
 # Treningsdagbok
-# WIP
-drop table person;
+
+drop table performsexercise;
+drop table inexercisegroup;
+drop table exercisegroups;
 drop table workout;
+drop table person;
 drop table exercise;
 drop table equipment;
+
 
 
 CREATE TABLE Person(
@@ -16,10 +20,11 @@ CREATE TABLE Person(
 CREATE table Workout(
 	WorkoutID integer,
     Date DATETIME, # lagring av dato/tidspunkt
-    Length integer,
+    Length integer, # feks lengde i minutt
     Exercises varchar(255),
     PersonalScore integer,
     Performance integer,
+    Note varchar(1000),
     
     CONSTRAINT PersonalScore CHECK (PersonalScore BETWEEN 1 AND 10),
 	CONSTRAINT Performance CHECK (Performance BETWEEN 1 AND 10),
@@ -27,26 +32,27 @@ CREATE table Workout(
     primary key(WorkoutID)
 );
 
-CREATE table Exercise(
-	ExerciseID integer,
-    Name varchar(255),
-    # Under, litt usikker på hvordan det skal representeres
-    EquipmentID integer,
-    Ename varchar(255),
-    Kilo integer,
-    Sets integer,
-    Description varchar(255),
-    
-    primary key(ExerciseID)
-);
-
 CREATE table Equipment(
 	EquipmentID integer,
-    Name varchar(255),
+    Equipmentname varchar(255) unique,
     Description varchar(255),
     
     primary key(EquipmentID)
 );
+
+CREATE table Exercise(
+	ExerciseID integer,
+    Name varchar(255),
+    EquipmentID integer, # Om equipmentID og Ename er null, betyr dette at øvelsen ikke trenger et apparat
+    Equipmentname varchar(255),
+    Kilo integer, 
+    Sets integer,
+    
+    primary key(ExerciseID),
+    foreign key(EquipmentID) references Equipment(EquipmentID),
+    foreign key(Equipmentname) references Equipment(Equipmentname)
+);
+
 
 CREATE table PerformsExercise(
 	WorkoutID integer,
@@ -61,8 +67,6 @@ CREATE table ExerciseGroups(
 	Name varchar(255),
     primary key(name)
 );
-
-
 
 CREATE table InExerciseGroup(
 	ExerciseID integer,
