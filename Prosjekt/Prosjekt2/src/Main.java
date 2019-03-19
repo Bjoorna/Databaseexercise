@@ -5,11 +5,19 @@ public class Main {
 
     public static void main(String[] args) {
         AddEquipment newequipment = new AddEquipment();
+        AddExercise newexercise = new AddExercise();
+/*
+        newexercise.connect();
+        newexercise.setEqID(1);
+        newexercise.setEName("\"Squat\"");
+        newexercise.setKilo(40);
+        newexercise.setSets(1000);
+        newexercise.InsertExercise();*/
 
         newequipment.connect();
-        newequipment.SetEquipmentID(1);
-        newequipment.SetEquipmentName("\"Power Rack\"");
-        newequipment.SetEqDescription("\"For squat etc\"");
+        newequipment.SetEquipmentID(3);
+        newequipment.SetEquipmentName("\"Dumbell\"");
+        newequipment.SetEqDescription("\"Push, flies, rows etc\"");
         // newequipment.startEq(1);
         newequipment.AddEquipment();
     }

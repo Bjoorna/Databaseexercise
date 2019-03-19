@@ -28,6 +28,7 @@ public class AddEquipment extends DBConn {
             String insert = "INSERT INTO equipment values (" + eqID +"," + eqName + ","
                     + description +");";
             equipment.executeUpdate(insert);
+            System.out.println(insert);
         }catch (Exception e){
             throw new RuntimeException("Feil i addeq", e);
         }
@@ -35,31 +36,10 @@ public class AddEquipment extends DBConn {
         try{
             if (connection!=null){
                 connection.close();
+                System.out.println("Connection closed");
             }
         }catch (Exception e){
             throw new RuntimeException("t", e);
         }
-
-        /*try {
-            equipment.setInt(1, eqID);
-            equipment.setString(2, eqName);
-            equipment.setString(3, description);
-
-        }catch (Exception e){
-            System.out.println(e);
-        }*/
-
-
     }
-
-    public void startEq(int id){
-        SetEquipmentID(id);
-        try{
-            equipment = connection.prepareStatement("INSERT INTO equipment VALUES ((?), (?), (?)));");
-        }catch (Exception e){
-            throw new RuntimeException(("Feil i start"), e);
-        }
-
-    }
-
 }
