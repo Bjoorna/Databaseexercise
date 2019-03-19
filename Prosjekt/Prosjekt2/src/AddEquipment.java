@@ -6,8 +6,8 @@ public class AddEquipment extends DBConn {
     private int eqID;
     private String eqName;
     private String description;
-    private PreparedStatement equipment;
-    String addEq = "insert into equipment values ("+ eqID + eqName+ description+")";
+    private Statement equipment;
+   // String addEq = "insert into equipment values ("+ \"eqID"\ + eqName+ description+")";
 
     public void SetEquipmentID(int ID){
         // TODO add scanner etc
@@ -23,14 +23,31 @@ public class AddEquipment extends DBConn {
     }
 
     public void AddEquipment(){
-        try {
+        try{
+            equipment = connection.createStatement();
+            String insert = "INSERT INTO equipment values (" + eqID +"," + eqName + ","
+                    + description +");";
+            equipment.executeUpdate(insert);
+        }catch (Exception e){
+            throw new RuntimeException("Feil i addeq", e);
+        }
+
+        try{
+            if (connection!=null){
+                connection.close();
+            }
+        }catch (Exception e){
+            throw new RuntimeException("t", e);
+        }
+
+        /*try {
             equipment.setInt(1, eqID);
             equipment.setString(2, eqName);
             equipment.setString(3, description);
 
         }catch (Exception e){
             System.out.println(e);
-        }
+        }*/
 
 
     }

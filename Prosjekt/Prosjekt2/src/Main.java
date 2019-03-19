@@ -7,9 +7,10 @@ public class Main {
         AddEquipment newequipment = new AddEquipment();
 
         newequipment.connect();
-        newequipment.SetEquipmentName("Power Rack");
-        newequipment.SetEqDescription("For squat etc");
-        newequipment.startEq(1);
+        newequipment.SetEquipmentID(1);
+        newequipment.SetEquipmentName("\"Power Rack\"");
+        newequipment.SetEqDescription("\"For squat etc\"");
+        // newequipment.startEq(1);
         newequipment.AddEquipment();
     }
 
