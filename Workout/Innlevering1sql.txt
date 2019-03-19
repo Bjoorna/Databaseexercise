@@ -1,15 +1,3 @@
-# Treningsdagbok
-
-drop table performsexercise;
-drop table inexercisegroup;
-drop table exercisegroups;
-drop table workout;
-drop table person;
-drop table exercise;
-drop table equipment;
-
-
-
 CREATE TABLE Person(
 	PersonID integer,
     Name varchar(255),
@@ -39,10 +27,10 @@ CREATE table Equipment(
 CREATE table Exercise(
 	ExerciseID integer,
     Name varchar(255),
-    EquipmentID integer, # Om equipmentID er null, betyr dette at Ã¸velsen ikke trenger et apparat
+    EquipmentID integer, # Om equipmentID er null, betyr dette at øvelsen ikke trenger et apparat
     Kilo integer, 
     Sets integer,
-    Description varchar(1000), # dersom EquipmentID er NULL, sÃ¥ trengs description
+    Description varchar(1000), # dersom EquipmentID er NULL, så trengs description
     
     primary key(ExerciseID),
     foreign key(EquipmentID) references Equipment(EquipmentID)
