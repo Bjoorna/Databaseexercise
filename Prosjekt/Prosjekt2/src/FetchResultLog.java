@@ -2,12 +2,12 @@ import java.sql.*;
 import java.util.*;
 
 
-public class SelectWorkoutWithNotes extends DBConn {
+public class FetchResultsLog extends DBConn {
 
     Statement selectstatement;
     ResultSet statementresult;
 
-    public void SelectWorkoutWithnotes(int date1, int date2){
+    public void FetchResulsLog(int date1, int date2){
         try{
             selectstatement = connection.createStatement();
             String q = "select * from workout " +
