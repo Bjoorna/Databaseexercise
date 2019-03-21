@@ -10,13 +10,16 @@ public class Main {
         AddWorkout newworkout = new AddWorkout();
         SelectWorkoutWithNotes selectWorkouts = new SelectWorkoutWithNotes();
         FetchResultLog resultlog = new FetchResultLog();
+        AddExerciseGroup newexercisegroup = new AddExerciseGroup();
+
         boolean check = true;
         Scanner sc = new Scanner(System.in);
         while(check){
             check = false;
             System.out.println("Would you like to: \n" +
                     "Insert new records: Insert\n" +
-                    "Find from database: Find");
+                    "Find from database: Find\n" +
+                    "Add exercise group: Add");
             String firstanswer = sc.nextLine();
             System.out.println(firstanswer+ " selected");
             switch (firstanswer){
@@ -35,6 +38,7 @@ public class Main {
                             int date2 = sc.nextInt();
                             resultlog.connect();
                             resultlog.Fetchlog(date1, date2);
+                            break;
 
                         case "note":
                             System.out.println("Find N last workouts: type note ");
@@ -42,9 +46,19 @@ public class Main {
                             // TODO add SELECT statements
                             selectWorkouts.connect();
                             selectWorkouts.SelectWorkoutWithnotes(lastworkouts);
+                            break;
                     }
                     break;
-
+                case "Add":
+                    System.out.println("Write exercise group name:");
+                    String EGroupName = sc.nextLine();
+                    newexercisegroup.setEGroupName(EGroupName);
+                    newexercisegroup.setinEGroupName(EGroupName);
+                    System.out.println("Write ID of exercise group:");
+                    int inEGroupID = sc.nextInt();
+                    newexercisegroup.setInEGroupID(inEGroupID);
+                    newexercisegroup.InsertExerciseGroup();
+                    break;
             }
         }
     }
