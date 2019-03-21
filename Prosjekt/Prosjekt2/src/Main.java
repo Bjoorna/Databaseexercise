@@ -11,6 +11,7 @@ public class Main {
         SelectWorkoutWithNotes selectWorkouts = new SelectWorkoutWithNotes();
         FetchResultLog resultlog = new FetchResultLog();
         AddExerciseGroup newexercisegroup = new AddExerciseGroup();
+        KiloOverTime kiloOverTime = new KiloOverTime();
 
         boolean check = true;
         Scanner sc = new Scanner(System.in);
@@ -27,8 +28,11 @@ public class Main {
                     Insert(newequipment, newexercise, newworkout, sc);
                     break;
                 case "Find":
-                    System.out.println("Find workouts within time interval: type result log");
-                    System.out.println("Find N last workouts: type note ");
+                    System.out.println("Find workouts within time interval: type result log \n" +
+                            "Find N last workouts: type note \n"+
+                            "Find KiloResults between dates: Kilo"
+                            );
+
                     String find = sc.nextLine();
                     switch (find){
                         case "result log":
@@ -46,6 +50,14 @@ public class Main {
                             // TODO add SELECT statements
                             selectWorkouts.connect();
                             selectWorkouts.SelectWorkoutWithnotes(lastworkouts);
+                            break;
+                        case "Kilo":
+                            System.out.println("Select from date: ");
+                            int dato1 = sc.nextInt();
+                            System.out.println("To date: ");
+                            int dato2 = sc.nextInt();
+                            kiloOverTime.connect();
+                            kiloOverTime.FindKiloResults(dato1, dato2);
                             break;
                     }
                     break;
