@@ -52,11 +52,13 @@ public class Main {
                 case "Add":
                     System.out.println("Write exercise group name:");
                     String EGroupName = sc.nextLine();
+
                     newexercisegroup.setEGroupName(EGroupName);
                     newexercisegroup.setinEGroupName(EGroupName);
                     System.out.println("Write ID of exercise group:");
                     int inEGroupID = sc.nextInt();
                     newexercisegroup.setInEGroupID(inEGroupID);
+                    newexercisegroup.connect();
                     newexercisegroup.InsertExerciseGroup();
                     break;
             }

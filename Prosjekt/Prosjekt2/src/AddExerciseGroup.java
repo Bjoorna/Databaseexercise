@@ -10,7 +10,7 @@ public class AddExerciseGroup extends DBConn {
 
     public void InsertExerciseGroup(){
         try{
-            exerciseGroup = connection.createStatement();
+            Statement exerciseGroup = connection.createStatement();
             String insert = "INSERT INTO exercisegroups(name) values (" + getEGroupName() +");";
             exerciseGroup.executeUpdate(insert);
             System.out.println(insert);
@@ -18,14 +18,14 @@ public class AddExerciseGroup extends DBConn {
             throw new RuntimeException("Feil i addeq", e);
         }
         try{
-            inExerciseGroup = connection.createStatement();
+            Statement inExerciseGroup = connection.createStatement();
             String insert = "INSERT INTO inexercisegroup(exerciseid, name) values (" + getInEGroupID() +","+ getinEGroupName() +");";
             inExerciseGroup.executeUpdate(insert);
             System.out.println(insert);
 
-        }catch (Exception e){
+        }catch (Exception e) {
             throw new RuntimeException("Feil i insert", e);
-
+        }
         try{
             if (connection!=null){
                 connection.close();

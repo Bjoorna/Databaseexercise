@@ -24,7 +24,6 @@ CREATE table Workout(
     PersonalScore integer CHECK (PersonalScore BETWEEN 1 AND 10),
     Performance integer CHECK (Performance BETWEEN 1 AND 10),
     Note varchar(1000),
-    
     primary key(WorkoutID)
 );
 
