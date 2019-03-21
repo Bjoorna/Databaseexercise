@@ -8,7 +8,6 @@ public class KiloOverTime extends DBConn{
     public void FindKiloResults(int date1, int date2){
         try{
             selectstatement = connection.createStatement();
-            // TODO vill ikke funke
             String q = "select date, kilo from exercise " +
                     "join performsexercise on exercise.exerciseID = performsexercise.exerciseid " +
                     "join workout on workout.workoutID = performsexercise.workoutid " +
