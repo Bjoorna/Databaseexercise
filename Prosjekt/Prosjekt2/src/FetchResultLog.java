@@ -15,6 +15,7 @@ public class FetchResultLog extends DBConn {
             selectstatement = connection.createStatement();
             String q = "select * from workout " +
                     "where date> " + date1+" and date<"+date2;
+
             statementresult = selectstatement.executeQuery(q);
             System.out.println("Last workouts: ");
             int rownr = 1;
