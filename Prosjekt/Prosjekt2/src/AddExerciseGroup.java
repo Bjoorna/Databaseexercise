@@ -19,9 +19,12 @@ public class AddExerciseGroup extends DBConn {
         }
         try{
             inExerciseGroup = connection.createStatement();
-            String insert = "INSERT INTO inexercisegroup(exerciseid, name) values (" + getEGroupName() +");";
+            String insert = "INSERT INTO inexercisegroup(exerciseid, name) values (" + getInEGroupID() +","+ getinEGroupName() +");";
+            inExerciseGroup.executeUpdate(insert);
+            System.out.println(insert);
 
-        }
+        }catch (Exception e){
+            throw new RuntimeException("Feil i insert", e);
 
         try{
             if (connection!=null){
