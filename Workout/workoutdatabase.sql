@@ -19,7 +19,7 @@ CREATE TABLE Person(
 
 CREATE table Workout(
 	WorkoutID integer,
-    Date DATETIME, # lagring av dato/tidspunkt
+    Date integer, # lagring av dato/tidspunkt
     Length integer, # feks lengde i minutt
     PersonalScore integer CHECK (PersonalScore BETWEEN 1 AND 10),
     Performance integer CHECK (Performance BETWEEN 1 AND 10),
