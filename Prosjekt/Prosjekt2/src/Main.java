@@ -1,28 +1,121 @@
 import java.sql.*;
 import java.util.Properties;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
         AddEquipment newequipment = new AddEquipment();
         AddExercise newexercise = new AddExercise();
+        AddWorkout newworkout = new AddWorkout();
+        boolean check = true;
+        Scanner sc = new Scanner(System.in);
+        while(check){
+            check = false;
+            System.out.println("Would you like to add new: \n" +
+                    "Equipment: A\n" +
+                    "Exercise: B\n" +
+                    "Workout: C");
+            String answer = sc.nextLine();
+            // TODO REFACTOR DETTE
+            switch (answer){
+                case "A":
+                    // TODO litt buggy
+                    System.out.println("EquipmentID: ");
+                    int eID = sc.nextInt();
+                    newequipment.SetEquipmentID(eID);
+                    System.out.println("Equipmentname: ");
+                    String eName = sc.next();
+                    newequipment.SetEquipmentName(eName);
+                    System.out.println("Equipment description: ");
+                    String desc = sc.next();
+                    newequipment.SetEqDescription(desc);
+                    newequipment.connect();
+                    newequipment.AddEquipment();
+                    break;
+                case "B":
+                    System.out.println("ExerciseID");
+                    int exerciseID = sc.nextInt();
+                    newexercise.setExerciseID(exerciseID);
+                    System.out.println("Exercisename: ");
+                    String exerciseName = sc.next();
+                    newexercise.setEName(exerciseName);
+                    System.out.println("How many Kilos: ");
+                    int kilos = sc.nextInt();
+                    newexercise.setKilo(kilos);
+                    System.out.println("How many Sets: ");
+                    int sets = sc.nextInt();
+                    newexercise.setKilo(sets);
+                    System.out.println("Exercise description: ");
+                    String exerciseDesc = sc.next();
+                    newexercise.setDesc(exerciseDesc);
+                    newexercise.connect();
+                    newexercise.InsertExercise();
+                    break;
+                case "C":
+                    System.out.println("Do you wish to add a note to the workout (y/n)?");
+                    String answerNote = sc.nextLine();
+                    switch (answerNote){
+                        case "n":
+                            System.out.println("WorkoutID");
+                            int wid = sc.nextInt();
+                            newworkout.setWorkoutID(wid);
+                            System.out.println("Date: ");
+                            int date = sc.nextInt();
+                            newworkout.setDate(date);
+                            System.out.println("Workout length; ");
+                            int wLength = sc.nextInt();
+                            newworkout.setLength(wLength);
+                            System.out.println("PersonalScore: ");
+                            int personal = sc.nextInt();
+                            newworkout.setPersonalScore(personal);
+                            System.out.println("Performance: ");
+                            int perfomance = sc.nextInt();
+                            newworkout.setPerformance(perfomance);
+                            newworkout.connect();
+                            newworkout.Insertworkout();
+                            break;
+                        case "y":
+                            System.out.println("WorkoutID");
+                            int widn = sc.nextInt();
+                            newworkout.setWorkoutID(widn);
+                            System.out.println("Date: ");
+                            int daten = sc.nextInt();
+                            newworkout.setDate(daten);
+                            System.out.println("Workout length; ");
+                            int wLengthn = sc.nextInt();
+                            newworkout.setLength(wLengthn);
+                            System.out.println("PersonalScore: ");
+                            int personaln = sc.nextInt();
+                            newworkout.setPersonalScore(personaln);
+                            System.out.println("Performance: ");
+                            int perfomancen = sc.nextInt();
+                            newworkout.setPerformance(perfomancen);
+                            System.out.println("Note: ");
+                            String note = sc.next();
+                            newworkout.setNote(note);
+                            newworkout.connect();
+                            newworkout.InsertworkoutWithNote();
+                            break;
+                    }
+                default:
+                    System.out.println("Wrong command");
+                    check = true;
+            }
+        }
+    }
+}
+
+
 /*
-        newexercise.connect();
+    newexercise.connect();
         newexercise.setEqID(1);
         newexercise.setEName("\"Squat\"");
         newexercise.setKilo(40);
         newexercise.setSets(1000);
         newexercise.InsertExercise();*/
 
-        newequipment.connect();
-        newequipment.SetEquipmentID(3);
-        newequipment.SetEquipmentName("\"Dumbell\"");
-        newequipment.SetEqDescription("\"Push, flies, rows etc\"");
-        // newequipment.startEq(1);
-        newequipment.AddEquipment();
-    }
-
-    // TODO For later if necessary
+// TODO For later if necessary
 /*
     String url = "jdbc:mysql://localhost:3306/treningsdagbok?autoReconnect=true&useSSL=false&useUnicode=true" +
             "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false" +
@@ -42,4 +135,3 @@ public class Main {
     }catch (Exception e) {
         throw new RuntimeException("baopsda", e);
     }*/
-}

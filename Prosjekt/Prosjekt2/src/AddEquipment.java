@@ -10,15 +10,18 @@ public class AddEquipment extends DBConn {
    // String addEq = "insert into equipment values ("+ \"eqID"\ + eqName+ description+")";
 
     public void SetEquipmentID(int ID){
-        // TODO add scanner etc
         this.eqID = ID;
     }
 
-    public void SetEquipmentName(String name){
+    public void SetEquipmentName(String name)
+    {
+        name = "\"" + name + "\"";
+        System.out.println(name);
         this.eqName = name;
     }
 
     public void SetEqDescription(String des){
+        des = "\"" + des + "\"";
         this.description = des;
     }
 
@@ -30,7 +33,7 @@ public class AddEquipment extends DBConn {
             equipment.executeUpdate(insert);
             System.out.println(insert);
         }catch (Exception e){
-            throw new RuntimeException("Feil i addeq", e);
+            throw new RuntimeException("Feil i addequipment", e);
         }
 
         try{

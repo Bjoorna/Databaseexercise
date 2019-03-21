@@ -14,8 +14,9 @@ public class AddExercise extends DBConn {
     public void InsertExercise(){
         try{
             exercise = connection.createStatement();
-            String insert = "INSERT INTO exercise(exerciseid, name, kilo, sets) values (" + getExerciseID() +"," + getEName()
-                    + "," + getKilo() + "," + getSets() +");";
+            String insert = "INSERT INTO exercise(exerciseid, name, kilo, sets," +
+                    " description) values (" + getExerciseID() +"," + getEName()
+                    + "," + getKilo() + "," + getSets() + "," +getDesc() + ");";
             // insert into exercise(exerciseid, name, kilo, sets) values (2, "Squat", 100, 3);
             exercise.executeUpdate(insert);
             System.out.println(insert);
@@ -46,6 +47,7 @@ public class AddExercise extends DBConn {
     }
 
     public void setEName(String EName) {
+        EName = "\"" + EName + "\"";
         this.EName = EName;
     }
 
@@ -77,7 +79,9 @@ public class AddExercise extends DBConn {
         return desc;
     }
 
-    public void setDesc(String desc) {
+    public void setDesc(String desc)
+    {
+        desc = "\"" + desc + "\"";
         this.desc = desc;
     }
 
