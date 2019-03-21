@@ -16,7 +16,6 @@ public class AddEquipment extends DBConn {
     public void SetEquipmentName(String name)
     {
         name = "\"" + name + "\"";
-        System.out.println(name);
         this.eqName = name;
     }
 

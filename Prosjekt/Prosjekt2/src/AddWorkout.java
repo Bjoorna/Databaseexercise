@@ -68,7 +68,6 @@ public class AddWorkout extends DBConn {
             String insert = "INSERT INTO workout(workoutid, date, length, personalscore" +
                     ", performance) values (" + getWorkoutID() +"," + getDate()
                     + "," + getLength() + "," + getPersonalScore() + "," + getPerformance() + ");";
-            // insert into workout(workoutid, name, kilo, sets) values (2, "Squat", 100, 3);
             workout.executeUpdate(insert);
             System.out.println(insert);
         }catch (Exception e){
