@@ -2,12 +2,15 @@ import java.sql.*;
 import java.util.*;
 
 
-public class FetchResultsLog extends DBConn {
+
+public class FetchResultLog extends DBConn {
+
 
     Statement selectstatement;
     ResultSet statementresult;
 
-    public void FetchResulsLog(int date1, int date2){
+
+    public void Fetchlog(int date1, int date2){
         try{
             selectstatement = connection.createStatement();
             String q = "select * from workout " +
@@ -36,6 +39,5 @@ public class FetchResultsLog extends DBConn {
         }
 
     }
-
 
 }
