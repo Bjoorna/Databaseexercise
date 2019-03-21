@@ -34,7 +34,7 @@ public class Main {
                             System.out.println("Type the end date (ddmmyy) for time interval: ");
                             int date2 = sc.nextInt();
                             resultlog.connect();
-                            resultlog.FetchResultLog(date1, date2);
+                            resultlog.Fetchlog(date1, date2);
 
                         case "note":
                             System.out.println("Find N last workouts: type note ");
