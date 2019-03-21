@@ -9,6 +9,7 @@ public class Main {
         AddExercise newexercise = new AddExercise();
         AddWorkout newworkout = new AddWorkout();
         SelectWorkoutWithNotes selectWorkouts = new SelectWorkoutWithNotes();
+        FetchResultLog resultlog = new FetchResultLog();
         boolean check = true;
         Scanner sc = new Scanner(System.in);
         while(check){
@@ -23,12 +24,25 @@ public class Main {
                     Insert(newequipment, newexercise, newworkout, sc);
                     break;
                 case "Find":
-                    System.out.println("Find Selected");
-                    System.out.println("Find N last workouts: ");
-                    int lastworkouts = sc.nextInt();
-                    // TODO add SELECT statements
-                    selectWorkouts.connect();
-                    selectWorkouts.SelectWorkoutWithnotes(lastworkouts);
+                    System.out.println("Find workouts within time interval: type result log");
+                    System.out.println("Find N last workouts: type note ");
+                    String find = sc.nextLine();
+                    switch (find){
+                        case "result log":
+                            System.out.println("Type the start date (ddmmyy) for time interval: ");
+                            int date1 = sc.nextInt();
+                            System.out.println("Type the end date (ddmmyy) for time interval: ");
+                            int date2 = sc.nextInt();
+                            resultlog.connect();
+                            resultlog.FetchResultLog(date1, date2);
+
+                        case "note":
+                            System.out.println("Find N last workouts: type note ");
+                            int lastworkouts = sc.nextInt();
+                            // TODO add SELECT statements
+                            selectWorkouts.connect();
+                            selectWorkouts.SelectWorkoutWithnotes(lastworkouts);
+                    }
                     break;
 
             }
